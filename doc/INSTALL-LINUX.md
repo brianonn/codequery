@@ -66,5 +66,12 @@ make
 make install
 ```
 
+For development and debugging of codequery itself, you can build a Debug version with no code optimization and all symbols in the executable with the following:
+```bash
+cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -DBUILD_QT5=ON ..
+make
+make install
+```
+
 Step 7: Please read [HOWTO-LINUX](HOWTO-LINUX.md) to learn how to use this software.
 

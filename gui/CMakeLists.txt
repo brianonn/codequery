@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2.2)
+cmake_minimum_required(VERSION 2.8.12)
 project(CodeQueryGUI)
 
 #ADD_DEFINITIONS( -Wall )
@@ -95,8 +95,11 @@ if (BUILD_QT5)
 
   add_definitions( -DUSE_QT5 )
 
-  set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "RELEASE")
-  
+  if ("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+    set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "RELEASE")
+  else()
+    set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "DEBUG")
+  endif()
   SET(CMAKE_AUTOMOC ON)
   SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
